@@ -16,6 +16,18 @@
                         {{ __('Dashboard') }}
                     </x-jet-nav-link>
                 </div>
+
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                        Home
+                    </x-jet-nav-link>
+                </div>
+
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                        Upload image
+                    </x-jet-nav-link>
+                </div>
             </div>
 
             <!-- Settings Dropdown -->
@@ -87,6 +99,10 @@
 
                             <div class="border-t border-gray-100"></div>
                         @endif
+
+                        <x-jet-dropdown-link href="{{ route('logout') }}">
+                            Settings
+                        </x-jet-dropdown-link>
 
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
