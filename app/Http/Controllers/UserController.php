@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Actions\Fortify\PasswordValidationRules;
+use Illuminate\Http\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 
 class UserController extends Controller
 {
@@ -15,7 +18,9 @@ class UserController extends Controller
     }
 
     public function update(Request $request){
-        $id = Auth::user()->id;
+
+        $user = Auth::user();
+        $id = $user->id;
 
         $validate = $this->validate($request, [
             'name' => ['required', 'string', 'max:255'],
@@ -30,5 +35,26 @@ class UserController extends Controller
         $surname = $request->input('surname');
         $nick = $request->input('nick');
         $email = $request->input('email');
+
+        $profile_image = $request->file('profile_image');
+        if($profile_image){
+            $image_path = time().$profile_image->getClientOriginalName();
+            Storage::disk('user')->put($image_path,File::get($profile_image));
+            $user->image = $image_path;
+        }
+
+        $user->name = $name;
+        $user->surname = $surname;
+        $user->nick = $nick;
+        $user->email = $email;
+
+        $user->update();
+
+        return redirect()->route('settings')->with(['message'=>'Usuario actualizado correctamente']);
+    }
+
+    public function getImage($filename){
+        $file = Storage::disk('user')->get($filename);
+        return new Response($file,200);
     }
 }

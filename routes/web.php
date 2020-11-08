@@ -24,3 +24,5 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 Route::middleware(['auth:sanctum', 'verified'])->get('/settings','UserController@settings')->name('settings');
 
 Route::middleware(['auth:sanctum', 'verified'])->post('/user/update','UserController@update')->name('user.update');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/user/avatar/{filename}','UserController@getImage')->name('user.avatar');

@@ -8,6 +8,17 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+                @if(session('message'))
+                    <div class="bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md" role="alert">
+                        <div class="flex">
+                            <div class="py-1"><svg class="fill-current h-6 w-6 text-teal-500 mr-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z"/></svg></div>
+                            <div>
+                                <p class="font-bold">Success!</p>
+                                <p class="text-sm">{{session('message')}}</p>
+                            </div>
+                        </div>
+                    </div>
+                @endif
                 <x-guest-layout>
                     <x-jet-authentication-card>
                         <x-slot name="logo">
@@ -16,12 +27,12 @@
 
                         <x-jet-validation-errors class="mb-4" />
 
-                        <form method="POST" action="{{ route('user.update') }}">
+                        <form method="POST" action="{{ route('user.update') }}" enctype="multipart/form-data">
                             @csrf
 
                             <div>
                                 <x-jet-label for="name" value="{{ __('Name') }}" />
-                                <x-jet-input id="name" class="block mt-1 w-full" type="text" name="name" :value="Auth::user()->email" required autofocus autocomplete="name" />
+                                <x-jet-input id="name" class="block mt-1 w-full" type="text" name="name" :value="Auth::user()->name" required autofocus autocomplete="name" />
                             </div>
 
                             <div class="mt-4">
@@ -37,6 +48,15 @@
                             <div class="mt-4">
                                 <x-jet-label for="email" value="{{ __('Email') }}" />
                                 <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="Auth::user()->email" required />
+                            </div>
+
+                            <div class="mt-4">
+                                @if(Auth::user()->image)
+                                    <!--<img src="{{url('user/avatar/'.Auth::user()->image)}}"/>-->
+                                        <img src="{{route('user.avatar',['filename'=>Auth::user()->image])}}"/>
+                                @endif
+                                <x-jet-label for="profile_image" value="{{ __('Profile Image') }}" />
+                                <x-jet-input id="profile_image" class="block mt-1 w-full" type="file" name="profile_image" />
                             </div>
                             <!--
                             <div class="mt-4">
