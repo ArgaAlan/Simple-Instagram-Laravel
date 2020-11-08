@@ -51,10 +51,7 @@
                             </div>
 
                             <div class="mt-4">
-                                @if(Auth::user()->image)
-                                    <!--<img src="{{url('user/avatar/'.Auth::user()->image)}}"/>-->
-                                        <img src="{{route('user.avatar',['filename'=>Auth::user()->image])}}"/>
-                                @endif
+                                @include('includes.avatar')
                                 <x-jet-label for="profile_image" value="{{ __('Profile Image') }}" />
                                 <x-jet-input id="profile_image" class="block mt-1 w-full" type="file" name="profile_image" />
                             </div>
