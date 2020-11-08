@@ -100,7 +100,7 @@
                             <div class="border-t border-gray-100"></div>
                         @endif
 
-                        <x-jet-dropdown-link href="{{ route('logout') }}">
+                        <x-jet-dropdown-link href="{{ route('settings') }}">
                             Settings
                         </x-jet-dropdown-link>
 
