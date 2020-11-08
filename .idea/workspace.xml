@@ -140,7 +140,7 @@
     <property name="DatabaseDriversLRU" value="mysql" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Models" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -152,6 +152,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\auth\app\Models" />
       <recent name="C:\xampp\htdocs\auth" />
     </key>
   </component>
@@ -180,7 +181,7 @@
       <option name="presentableId" value="Default" />
       <updated>1604708570019</updated>
       <workItem from="1604708571142" duration="729000" />
-      <workItem from="1604797118023" duration="3690000" />
+      <workItem from="1604797118023" duration="6707000" />
     </task>
     <servers />
   </component>
@@ -192,5 +193,9 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1032" y="178" width="850" height="683" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1604798434993" />
+    <state x="143" y="230" width="672" height="678" key="search.everywhere.popup" timestamp="1604802835271">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="143" y="230" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1604802835271" />
   </component>
 </project>
