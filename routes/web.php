@@ -12,25 +12,11 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-use App\Image;
 
 Route::get('/', function () {
-    $images = Image::all();
-    foreach ($images as $image){
-        //var_dump($image);
-        echo $image->image_path."<br/>";
-        echo $image->description."<br/>";
-        echo $image->user->name.' '.$image->user->surname.'</br>';
-        if(count($image->comments) >= 1){
-            echo '<h4>Comentarios</h4>';
-            foreach ($image->comments as $comment){
-                echo $comment->user->name.' '.$comment->user->surname.': ';
-                echo $comment->content."<br/>";
-            }
-        }
-        echo 'LIKES: '.count($image->likes);
-        echo "<br/>///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////<br/>";
-    }
-
     return view('welcome');
 });
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');

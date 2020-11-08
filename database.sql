@@ -1,30 +1,11 @@
-CREATE DATABASE IF NOT EXISTS instagram;
-USE instagram;
-
-CREATE TABLE IF NOT EXISTS users(
-    id INT NOT NULL AUTO_INCREMENT,
-    role VARCHAR(20),
-    name VARCHAR(100),
-    surname VARCHAR(200),
-    nick VARCHAR(100),
-    email VARCHAR(255),
-    password VARCHAR(255),
-    image VARCHAR(255),
-    created_at DATETIME,
-    updated_at DATETIME,
-    remember_token VARCHAR(255),
-    CONSTRAINT pk_users PRIMARY KEY(id)
-)ENGINE=InnoDB;
-
-INSERT INTO users VALUES(NULL, 'user', 'Alan', 'Gonzalez', 'ArgaAlan', 'argaalan@mail.com', null, null, CURTIME(), CURTIME(), NULL);
-INSERT INTO users VALUES(NULL, 'user', 'Hugo', 'Masharelli', 'Masharelli', 'masharelli@mail.com', null, null, CURTIME(), CURTIME(), NULL);
-INSERT INTO users VALUES(NULL, 'user', 'Alberto', 'Labrada', 'Labrada', 'labrada@mail.com', null, null, CURTIME(), CURTIME(), NULL);
+CREATE DATABASE IF NOT EXISTS auth;
+USE auth;
 
 SELECT * FROM users;
 
 CREATE TABLE IF NOT EXISTS images(
     id INT NOT NULL AUTO_INCREMENT,
-    user_id INT,
+    user_id BIGINT,
     image_path VARCHAR(255),
     description TEXT,
     created_at DATETIME,
@@ -42,7 +23,7 @@ SELECT * FROM images;
 
 CREATE TABLE IF NOT EXISTS comments(
     id INT NOT NULL AUTO_INCREMENT,
-    user_id INT,
+    user_id BIGINT,
     image_id INT,
     content TEXT,
     created_at DATETIME,
@@ -58,7 +39,7 @@ INSERT INTO comments VALUES(NULL, 2, 4, 'Que bueno!!!!', CURTIME(), CURTIME());
 
 CREATE TABLE IF NOT EXISTS likes(
     id INT NOT NULL AUTO_INCREMENT,
-    user_id INT,
+    user_id BIGINT,
     image_id INT,
     created_at DATETIME,
     updated_at DATETIME,
