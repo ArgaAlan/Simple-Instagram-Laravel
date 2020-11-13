@@ -15,7 +15,7 @@
                         </x-slot>
                         <x-jet-validation-errors class="mb-4" />
 
-                        <form method="POST" action="{{ route('user.update') }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('image.save') }}" enctype="multipart/form-data">
                             @csrf
 
                             <div>
